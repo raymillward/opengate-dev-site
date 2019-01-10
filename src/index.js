@@ -9,6 +9,7 @@ import App from './App';
 import opengateAppReducer from './reducers/opengateApp.reducer'
 import * as serviceWorker from './serviceWorker';
 import HomePageComponent from './homepage/HomePage';
+import MenuBarComponent from './menuBar/MenuBar';
 
 const store = createStore(opengateAppReducer)
 
@@ -16,6 +17,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <div>
+        <MenuBarComponent />
         <Route path="/" component={HomePageComponent} />
         <Route path="/app" component={App} />
       </div>
