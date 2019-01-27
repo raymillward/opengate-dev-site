@@ -1,5 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
 import Background from '../images/background.jpg';
 import MainMessage from './MainMessage';
 import Button from '@material-ui/core/Button';
@@ -45,7 +47,11 @@ const HomePageComponent = props => (
         <MainMessage />
       </div>
       <div className={props.classes.buttonContainer}>
-        <Button variant="contained" className={props.classes.button}>
+        <Button
+          variant="contained"
+          className={props.classes.button}
+          onClick={() => props.navigateToVisionPage()}
+        >
           Find out more
         </Button>
         <Button
@@ -65,4 +71,18 @@ const HomePageComponent = props => (
   </div>
 );
 
-export default withStyles(styles)(HomePageComponent);
+const mapDispatchToProps = dispatch => ({
+  navigateToVisionPage: () => {
+    console.log('changing page');
+    dispatch(push('/our-vision-and-values'));
+  },
+});
+
+const mapStateToProps = () => ({});
+
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(HomePageComponent)
+);

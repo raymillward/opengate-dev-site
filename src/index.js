@@ -1,21 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { createBrowserHistory } from 'history';
+import thunk from 'redux-thunk';
 import './index.css';
 import 'typeface-roboto';
 import 'typeface-lobster';
 import App from './App';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
+import { routerMiddleware, ConnectedRouter } from 'connected-react-router';
 import opengateAppReducer from './reducers/opengateApp.reducer';
 import * as serviceWorker from './serviceWorker';
 import HomePageComponent from './homepage/HomePage';
 import MenuBarComponent from './menuBar/MenuBar';
 import VisionPage from './vision/VisionPage';
 
-const store = createStore(opengateAppReducer);
+const history = createBrowserHistory();
+const router = routerMiddleware(history);
+
+const middleware = [router, thunk];
+
+const store = createStore(
+  opengateAppReducer(history),
+  compose(applyMiddleware(...middleware))
+);
 
 const theme = createMuiTheme({
   palette: {
@@ -30,15 +40,15 @@ const theme = createMuiTheme({
 
 ReactDOM.render(
   <Provider store={store}>
-    <MuiThemeProvider theme={theme}>
-      <Router>
+    <ConnectedRouter history={history}>
+      <MuiThemeProvider theme={theme}>
         <div>
           <MenuBarComponent />
           <Route path="/" component={HomePageComponent} exact />
           <Route path="/our-vision-and-values" component={VisionPage} />
         </div>
-      </Router>
-    </MuiThemeProvider>
+      </MuiThemeProvider>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );
