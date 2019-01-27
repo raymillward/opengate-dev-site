@@ -8,3 +8,11 @@ install:
 - npm install
 script:
   - npm run build
+deploy:
+  provider: releases
+  github_token: $github_token
+  local_dir: build
+  name: $TRAVIS_TAG
+  on:
+    branch: master
+    tags: true
