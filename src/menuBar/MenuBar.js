@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -79,10 +79,9 @@ const styles = theme => ({
   title: {
     display: 'flex',
     justifyContent: 'center',
-    width: 'calc(100% - 150px)'
-  }
+    width: 'calc(100% - 150px)',
+  },
 });
-
 
 class MenuBarComponent extends React.Component {
   state = {
@@ -101,26 +100,34 @@ class MenuBarComponent extends React.Component {
     const { classes, theme } = this.props;
     const { open } = this.state;
 
-  return (<div className={classes.root}>
-  <CssBaseline />
-    <AppBar position="fixed" className={classNames(classes.appBar, {
+    return (
+      <div className={classes.root}>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          className={classNames(classes.appBar, {
             [classes.appBarShift]: open,
-          })}>
-      <Toolbar disableGutters={!open}>
-        <IconButton
-          color="inherit"
-          aria-label="Open drawer"
-          onClick={this.handleDrawerOpen}
-          className={classNames(classes.menuButton, open && classes.hide)}
+          })}
         >
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="title" color="inherit" className={classes.title}>
-          Wantage Community Church
-        </Typography>
-      </Toolbar>
-    </AppBar>
-    <Drawer
+          <Toolbar disableGutters={!open}>
+            <IconButton
+              color="inherit"
+              aria-label="Open drawer"
+              onClick={this.handleDrawerOpen}
+              className={classNames(classes.menuButton, open && classes.hide)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant="title"
+              color="inherit"
+              className={classes.title}
+            >
+              Wantage Community Church
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Drawer
           className={classes.drawer}
           variant="persistent"
           anchor="left"
@@ -131,14 +138,20 @@ class MenuBarComponent extends React.Component {
         >
           <div className={classes.drawerHeader}>
             <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+              {theme.direction === 'ltr' ? (
+                <ChevronLeftIcon />
+              ) : (
+                <ChevronRightIcon />
+              )}
             </IconButton>
           </div>
           <Divider />
           <List>
             {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
               <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
@@ -147,17 +160,20 @@ class MenuBarComponent extends React.Component {
           <List>
             {['All mail', 'Trash', 'Spam'].map((text, index) => (
               <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
           </List>
         </Drawer>
-    <main className={classes.content}>
+        <main className={classes.content}>
           <div className={classes.toolbar} />
-    </main>
-  </div>)
-        }
+        </main>
+      </div>
+    );
+  }
 }
 
 export default withStyles(styles, { withTheme: true })(MenuBarComponent);

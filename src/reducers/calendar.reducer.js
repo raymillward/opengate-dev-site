@@ -1,10 +1,10 @@
 const calendarReducer = (state = {}, action) => {
   switch (action.type) {
     case 'TEMP':
-      return {...state}
+      return { ...state };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default calendarReducer
+export default calendarReducer;

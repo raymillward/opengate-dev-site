@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
@@ -18,29 +18,35 @@ const fontSizes = theme => ({
   [theme.breakpoints.up('md')]: {
     fontSize: 60,
   },
-})
+});
 const styles = theme => ({
   level1: {
-    ...fontSizes(theme)
+    ...fontSizes(theme),
   },
   level2: {
     marginTop: 50,
     marginLeft: 50,
-    ...fontSizes(theme)
+    ...fontSizes(theme),
   },
   level3: {
     marginTop: 50,
     marginLeft: 100,
-    ...fontSizes(theme)
+    ...fontSizes(theme),
   },
-})
+});
 
 const MainMessage = props => (
   <div>
-    <Typography color="secondary" variant="h2" className={props.classes.level1}>A home for all</Typography>
-    <Typography variant="h2" className={props.classes.level2}>A family for discipleship</Typography>
-    <Typography variant="h2" className={props.classes.level3}>A base for sending</Typography>
+    <Typography color="secondary" variant="h2" className={props.classes.level1}>
+      A home for all
+    </Typography>
+    <Typography variant="h2" className={props.classes.level2}>
+      A family for discipleship
+    </Typography>
+    <Typography variant="h2" className={props.classes.level3}>
+      A base for sending
+    </Typography>
   </div>
-)
+);
 
-export default withStyles(styles, {withTheme: true})(MainMessage)
+export default withStyles(styles, { withTheme: true })(MainMessage);

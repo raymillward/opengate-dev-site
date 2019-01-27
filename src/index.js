@@ -1,26 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './index.css';
 import 'typeface-roboto';
 import 'typeface-lobster';
 import App from './App';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import opengateAppReducer from './reducers/opengateApp.reducer'
+import opengateAppReducer from './reducers/opengateApp.reducer';
 import * as serviceWorker from './serviceWorker';
 import HomePageComponent from './homepage/HomePage';
 import MenuBarComponent from './menuBar/MenuBar';
 import VisionPage from './vision/VisionPage';
 
-const store = createStore(opengateAppReducer)
+const store = createStore(opengateAppReducer);
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#549885'
+      main: '#549885',
     },
     secondary: {
       main: '#f50057',
@@ -40,7 +40,8 @@ ReactDOM.render(
       </Router>
     </MuiThemeProvider>
   </Provider>,
-  document.getElementById('root'));
+  document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
