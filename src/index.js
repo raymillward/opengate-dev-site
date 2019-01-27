@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createBrowserHistory } from 'history';
 import thunk from 'redux-thunk';
 import './index.css';
 import 'typeface-roboto';
 import 'typeface-lobster';
-import App from './App';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { routerMiddleware, ConnectedRouter } from 'connected-react-router';
 import opengateAppReducer from './reducers/opengateApp.reducer';
