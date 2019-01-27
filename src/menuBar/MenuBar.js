@@ -76,6 +76,11 @@ const styles = theme => ({
     }),
     marginLeft: 0,
   },
+  title: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: 'calc(100% - 150px)'
+  }
 });
 
 
@@ -110,7 +115,7 @@ class MenuBarComponent extends React.Component {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="title" color="inherit" className={classes.grow}>
+        <Typography variant="title" color="inherit" className={classes.title}>
           Wantage Community Church
         </Typography>
       </Toolbar>
