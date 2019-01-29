@@ -8,11 +8,15 @@ install:
 - npm install
 script:
   - npm run build
+before_deploy:
+  - npm run build
+  - chmod +x $TRAVIS_BUILD_DIR/package_artifacts.sh
+  - "$TRAVIS_BUILD_DIR/package_artifacts.sh $TRAVIS_BUILD_DIR"
 deploy:
   provider: releases
   api_key: $github_token
   file_glob: true
-  file: build/**/*
+  file: "${TRAVIS_BUILD_DIR}/artifacts/*"
   skip_cleanup: true
   name: $TRAVIS_TAG
   on:
